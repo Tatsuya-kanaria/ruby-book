@@ -1,9 +1,16 @@
 class Product
+  include Loggable
   attr_reader :name, :price
 
   def initialize(name, price)
     @name = name
     @price = price
+  end
+
+  def title
+    # include した　Loggable モジュールの log メソッドを呼び出す
+    log 'title is called.'
+    'A great movie'
   end
 
   def display_text
@@ -39,10 +46,10 @@ class DVD < Product
   end
 end
 
-product = Product.new('q',100)
-# puts "Product: #{product.to_s}"
-puts product.display_text
+# product = Product.new('q',100)
+# # puts "Product: #{product.to_s}"
+# puts product.display_text
 
-dvd = DVD.new('qqq', 1000, 100)
-# puts "DVD: #{dvd.to_s}"
-puts dvd.display_text
+# dvd = DVD.new('qqq', 1000, 100)
+# # puts "DVD: #{dvd.to_s}"
+# puts dvd.display_text

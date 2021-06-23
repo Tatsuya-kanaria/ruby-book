@@ -1,7 +1,16 @@
 module Loggable
+  # 定数も定義できる
+  PREFIX = '[LOG]'.freeze
+  # 他の特異メソッドを定義する場合に定義する
+  # class << self
   def log(text)
-    puts "[LOG] #{text}"
+    puts "#{PREFIX} #{text}"
   end
+  # end
+
+  # log メソッドをミックスインとしても、モジュールの特異メソッドとしても使えるようにする
+  # 対象メソッドの定義より下で呼び出すこと
+  module_function :log
 end
 
 # s = 'abc'
